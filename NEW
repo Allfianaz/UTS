@@ -1,0 +1,143 @@
+#include <conio.h>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+using namespace std;
+
+    struct beli {
+        char nama_op[50], nomor[50], nominal[50];
+        };
+    beli pulsa[100];
+    int i, j, k, l;
+
+void enter()
+    {
+        cout << "=============================================================================" << endl;
+        cout << "Jumlah nomor Perdana yang ingin anda Top-Up : ";
+        cin >> j;
+        k = 0;
+        for (i = 0; i < j; i++){
+            k = k + 1;
+            cout << "=============================================================================" << endl;
+            cout << "\t Inputkan DATA KARTU PERDANA ke-" << k << endl;
+            cout << "\t\t NOMOR ANDA \t\t\t: ";
+            cin >> pulsa[l].nomor;
+            cout << "\t\t NAMA OPERATOR \t\t\t: ";
+            cin >> pulsa[l].nama_op;
+            cout << "\t\t NOMINAL PULSA \t\t\t: ";
+            cin >> pulsa[l].nominal;
+            l++;
+        }
+        cout << "=============================================================================" << endl;
+    }
+
+void tampilkan()
+{
+    int a, b;
+    cout << "=============================================================================" << endl;
+    cout << "\t\t\t\t || DATA SEKARANG ||" << endl;
+    b = 0;
+    for (a = 0; a < l; a++){
+        b = b + 1;
+        cout << "=============================================================================" << endl;
+        cout << "\t DATA KARTU KE-" << b << " :" << endl;
+        cout << "=============================================================================" << endl;
+        cout << "\t\t | Nomor Anda \t\t\t: " << pulsa[a].nomor << endl;
+        cout << "\t\t | OPERATOR \t\t\t: " << pulsa[a].nama_op << endl;
+        cout << "\t\t | Nominal Pengisian \t\t: " << pulsa[a].nominal << endl;
+    }
+    cout << endl;
+    getch();
+
+}
+
+void canceltopup()
+{
+    int x, y;
+    cout << "=============================================================================" << endl;
+    cout << "PERDANA yang ingin anda CANCEL?" << " : ";
+    cin >> x;
+    y = x - 1;
+    l--;
+    for (int i = y; i < l; i++){
+        pulsa[i] = pulsa[i+1];
+        }
+    k = k - 1;
+    cout << "\t\t KARTU PERDANA KE - " << x << " Telah di CANCEL!" << endl;
+    getch();
+}
+
+void editperdana()
+{
+    int e, f;
+    cout << "=============================================================================" << endl;
+    cout << "Data kartu PERDANA yang ingin Anda ubah : ";
+    cin >> e;
+    f = e - 1;
+    cout << "\t Nomor (BARU) \t\t\t\t : ";
+    cin >> pulsa[f].nomor;;
+    cout << "\t OPERATOR (BARU) \t\t\t : ";
+    cin >> pulsa[f].nama_op;
+    cout << "\t Nominal Pengisian (BARU) \t\t : ";
+    cin >>pulsa[f].nominal;
+}
+
+int main()
+{
+    int opsi;
+    char n;
+    cout << "\n\t\t\t --------GROUP C----------" << endl;
+    cout << "\n\t\t\t 1. Alfian Azis (17053003)" << endl;
+    cout << "\n\t\t\t 2. Chandra Hersandy (17053006)" << endl;
+    cout << "\n\t\t\t 3. Etmundus Nusa (17053052)" << endl;
+    cout << "\n\t\t\t # PROGRAM INPUT DATA NOMOR KARTU PERDANA PENGISIAN PULSA #" << endl;
+    cout << "\n\n\t\t\t TEKAN TOMBOL MANA SAJA UNTUK LANJUT";
+    getch();
+    cout << endl;
+    tofront:
+        cout << "=============================================================================" << endl;
+        cout << "MENU OPSI :" << "\n\t\t\t\t ||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "1. Insert PERDANA" << "\n\t\t\t\t ||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "2. Edit PERDANA" << "\n\t\t\t\t ||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "3. Show List Order PERDANA" << "\n\t\t\t\t ||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "4. CANCEL Order Pulsa PERDANA" << "\n\t\t\t\t ||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "5. EXIT" << endl;
+        cout << "=============================================================================" << endl;
+        cout << "Pilih Opsi anda : ";
+        cin >> opsi;
+        if (opsi == 1){
+            enter();
+            goto tofront;
+        }
+        if (opsi == 2){
+            editperdana();
+            goto tofront;
+        }
+        if (opsi == 3){
+            tampilkan();
+            goto tofront;
+        }
+        if (opsi == 4){
+            canceltopup();
+            goto tofront;
+        }
+        if (opsi == 5){
+            cout << "\t\t\t\t KELUAR DARI PROGRAM? (y/n) ";
+            cin >> n;
+            if (n == 'y' || n == 'Y'){
+                cout << "\n\n\n\t\t\t\t\t TERIMAH KASIH" << endl;
+            }
+            if (n == 'n' || n == 'N'){
+                goto tofront;
+            }
+        }
+        else {
+            cout << "=============================================================================" << endl;
+            cout << "\t\t\t HANYA ADA 5 OPSI BOSQUE" << endl;
+            cout << "\t\t\t PRESS ANY KEY TO CONTINUE";
+            cout << endl;
+            getch();
+            goto tofront;
+        }
+}
